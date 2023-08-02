@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/views/Navbar/index'
 import Wrapper from '@/components/shared/Wrapper/index'
+import Footer from '@/components/views/Footer/index'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,7 +22,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <Wrapper>
           <Navbar />
-          {children}
+          <div className='min-h-screen'>
+            {children}
+          </div>
+          <Footer />
         </Wrapper>
       </body>
     </html>
