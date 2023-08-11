@@ -9,12 +9,23 @@ import { BsCart2 } from "react-icons/bs"
 import { HiOutlineChevronDown } from "react-icons/hi"
 import DropDown from "../subComponents/DropDown"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import Expand from "../subComponents/Expand"
 
 
 const Navbar = () => {
+    const router = useRouter();
     const [isNavbaropen, setNavbaropen] = useState<boolean>(false);
     const [cardItemNumber, setcardItemNumber] = useState<number>(0);
+    const [searchQuery, setsearchQuery] = useState("");
+
+    function handleSearchCalledFunc(e: any) {
+        if (e.key === "Enter" && e.keyCode === 13) {
+            router.push(`/search/${searchQuery}`);
+
+        }
+    }
+
     return (
         <div className="bg-[#ffffffba] z-50 sticky top-0 backdrop-blur-lg">
             <div className="py-6 flex items-center justify-between space-x-12">
@@ -34,8 +45,14 @@ const Navbar = () => {
                         ))}
                     </ul>
                     <div className="border flex items-center text-gray-600 px-3 rounded-md">
-                        <BiSearch />
-                        <input type="text" className="focus:outline-none pr-5 pl-1 py-1" placeholder="Search in our Store" />
+                        <Link href={`/search/${searchQuery}`}><BiSearch /></Link>
+
+                        <input type="text"
+                            value={searchQuery}
+                            onKeyDown={handleSearchCalledFunc}
+                            onChange={(e) => setsearchQuery(e.target.value)}
+                            className="focus:outline-none pr-5 pl-1 py-1"
+                            placeholder="Search in our Store" />
                     </div>
                     <div className="flex flex-shrink-0 relative w-11 h-11 items-center justify-center rounded-full bg-gray-300">
                         <div className="w-4 h-4 absolute text-xs font-light top-1 bg-red-400 rounded-full right-2 flex items-center justify-center">

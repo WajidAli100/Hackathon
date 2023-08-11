@@ -14,8 +14,9 @@ export interface imagesType {
     _key: string,
 }
 
+
 export interface oneProductType {
-    slug: slugType,
+    slug: any,
     quantity: number,
     _rev: string,
     _type: string,
@@ -26,7 +27,7 @@ export interface oneProductType {
     image: Array<imagesType>
     description: any,
     productTypes: Array<string>,
-    size: Array<string>
+    size: Array<string>,
     price: number,
 }
 
