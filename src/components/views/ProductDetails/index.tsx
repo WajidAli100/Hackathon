@@ -7,6 +7,7 @@ import { client } from "../../../../sanity/lib/client";
 import imageUrlBuilder from '@sanity/image-url'
 import { BsCart2 } from "react-icons/bs";
 import { imagesType, oneProductType } from "@/components/utils/ProductsDataArraysAndTypes";
+import { cartContext } from "@/global/context/index";
 //import { cartContext } from "@/global/context";
 //import PortableText from "react-portable-text";
 
@@ -18,7 +19,7 @@ function urlFor(source: any) {
 
 
 const ProductDetail: FC<{ item: oneProductType }> = ({ item }) => {
-    //let { cartArray, userData, dispatch } = useContext(cartContext)
+    let { cartArray, userData, dispatch } = useContext(cartContext)
     const [imageForPreviewOfSelected, setImageForPreviewOfSelected] = useState<string>(item.image[0]._key);
     const [quantity, setQuantity] = useState(1);
 
@@ -26,26 +27,26 @@ const ProductDetail: FC<{ item: oneProductType }> = ({ item }) => {
 
 
 
-    //   function handleAddToCart() {
-    //     let isExsits = cartArray.some((elem: any) => elem.product_id === item._id);
+    function handleAddToCart() {
+        let isExsits = cartArray.some((elem: any) => elem.product_id === item._id);
 
-    //     if (userData) {
-    //       let dataToAddInCart = {
-    //         product_id: item._id,
-    //         quantity: quantity,
-    //         user_id: userData.uuid,
-    //         price:item.price,
-    //       };
-    //       if (!isExsits) {
-    //         dispatch("addToCart", dataToAddInCart);
-    //       }else{
-    //         dispatch("updateCart", dataToAddInCart)
-    //       }
-    //       notification(item.productName);
-    //     } else {
-    //       notificationError("Please login first");
-    //     }
-    //   };
+        if (userData) {
+            let dataToAddInCart = {
+                product_id: item._id,
+                quantity: quantity,
+                user_id: userData.uuid,
+                price: item.price,
+            };
+            if (!isExsits) {
+                dispatch("addToCart", dataToAddInCart);
+            } else {
+                dispatch("updateCart", dataToAddInCart)
+            }
+            notification(item.productName);
+        } else {
+            notificationError("Please login first");
+        }
+    };
 
 
 
@@ -62,18 +63,18 @@ const ProductDetail: FC<{ item: oneProductType }> = ({ item }) => {
         }
     };
 
-    //   const notification = (title: string) => {
-    //     toast(` ${quantity} ${title} added to Cart`, {
-    //       icon: '👏',
-    //       position: "top-right"
-    //     })
-    //   };
+    const notification = (title: string) => {
+        // toast(` ${quantity} ${title} added to Cart`, {
+        //   icon: '👏',
+        //   position: "top-right"
+        // })
+    };
 
-    //   const notificationError = (title: string) => {
-    //     toast(title, {
-    //       position: "top-right"
-    //     })
-    //   };
+    const notificationError = (title: string) => {
+        // toast(title, {
+        //   position: "top-right"
+        // })
+    };
 
 
 
@@ -139,15 +140,15 @@ const ProductDetail: FC<{ item: oneProductType }> = ({ item }) => {
                                 className="select-none cursor-pointer flex justify-center items-center w-9 h-9 rounded-full border border-gray-800">+</div>
                         </div>
                     </div>
-                    {/* <div className="flex gap-x-8 items-center">
-            <button onClick={() => handleAddToCart()} className="flex items-center text-white bg-gray-900 border border-gray-500 px-4 py-2">
-              <BsCart2 />
-              &nbsp;
-              &nbsp;
-              Add to Cart
-            </button>
-            <p className="text-2xl font-semibold">${item.price}{".00"}</p>
-          </div> */}
+                    <div className="flex gap-x-8 items-center">
+                        <button onClick={() => handleAddToCart()} className="flex items-center text-white bg-gray-900 border border-gray-500 px-4 py-2">
+                            <BsCart2 />
+                            &nbsp;
+                            &nbsp;
+                            Add to Cart
+                        </button>
+                        <p className="text-2xl font-semibold">${item.price}{".00"}</p>
+                    </div>
                 </div>
 
             </div>
