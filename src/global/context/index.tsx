@@ -187,7 +187,7 @@ const ContextWrapper = ({ children }: { children: ReactNode }) => {
         setLoading(true);
         if (user) {
             updateProfile(user, {
-                displayName: userName, photoURL: "https://abdulbasit-self.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FAbdulBasit.40cf649b.png&w=640&q=75"
+                displayName: userName, photoURL: "https://theprogrammingguru.com/wp-content/uploads/2023/06/sandbox-land-gamers-using-glasses-800x445.jpg"
             }).then(() => {
                 setLoading(false);
                 window.location.reload();
