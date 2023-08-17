@@ -1,5 +1,5 @@
 "use client"
-//import toast, { Toaster } from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast'
 import Image from "next/image"
 //import { imagesType, oneProductType } from "@/components/utils/ProductsDataArrayAndType"
 import { FC, useContext, useState } from "react"
@@ -9,7 +9,7 @@ import { BsCart2 } from "react-icons/bs";
 import { imagesType, oneProductType } from "@/components/utils/ProductsDataArraysAndTypes";
 import { cartContext } from "@/global/context/index";
 //import { cartContext } from "@/global/context";
-//import PortableText from "react-portable-text";
+import PortableText from "react-portable-text";
 
 const builder: any = imageUrlBuilder(client);
 
@@ -64,23 +64,23 @@ const ProductDetail: FC<{ item: oneProductType }> = ({ item }) => {
     };
 
     const notification = (title: string) => {
-        // toast(` ${quantity} ${title} added to Cart`, {
-        //   icon: '👏',
-        //   position: "top-right"
-        // })
+        toast(` ${quantity} ${title} added to Cart`, {
+            icon: '👏',
+            position: "top-right"
+        })
     };
 
     const notificationError = (title: string) => {
-        // toast(title, {
-        //   position: "top-right"
-        // })
+        toast(title, {
+            position: "top-right"
+        })
     };
 
 
 
     return (
         <div>
-            {/* <Toaster /> */}
+            <Toaster />
             <div className="flex flex-col lg:flex-row justify-center items-center py-7">
 
                 {/* left */}
@@ -162,9 +162,9 @@ const ProductDetail: FC<{ item: oneProductType }> = ({ item }) => {
                         <div className="w-80">
                             <h3 className="font-semibold">PRODUCT DETAILS</h3>
                         </div>
-                        {/* <p>
-              <PortableText content={item.description} />
-            </p> */}
+                        <p>
+                            <PortableText content={item.description} />
+                        </p>
                     </div>
                     <div className="flex px-2 py-8">
                         <div className="w-80">
