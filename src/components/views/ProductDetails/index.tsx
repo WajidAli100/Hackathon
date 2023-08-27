@@ -6,10 +6,9 @@ import { FC, useContext, useState } from "react"
 import { client } from "../../../../sanity/lib/client";
 import imageUrlBuilder from '@sanity/image-url'
 import { BsCart2 } from "react-icons/bs";
-import { imagesType, oneProductType } from "@/components/utils/ProductsDataArraysAndTypes";
-import { cartContext } from "@/global/context/index";
-//import { cartContext } from "@/global/context";
+import { cartContext } from "@/global/context";
 import PortableText from "react-portable-text";
+import { imagesType, oneProductType } from '@/components/utils/ProductsDataArraysAndTypes';
 
 const builder: any = imageUrlBuilder(client);
 

@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import Navbar from '@/components/views/Navbar/index'
 import Wrapper from '@/components/shared/Wrapper/index'
 import Footer from '@/components/views/Footer/index'
+import TopLabel from '@/components/views/TopLabel/index'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <TopLabel />
         <Wrapper>
           <Navbar />
           <div className='min-h-screen'>

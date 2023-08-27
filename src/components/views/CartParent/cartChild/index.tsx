@@ -7,7 +7,7 @@ import { RiDeleteBin6Line } from "react-icons/ri"
 import AllProductsCompo from "../../AllProduct"
 import { client } from "../../../../../sanity/lib/client"
 import imageUrlBuilder from '@sanity/image-url'
-//import toast, { Toaster } from "react-hot-toast"
+import toast, { Toaster } from "react-hot-toast"
 import { useRouter } from "next/navigation"
 import BASE_PATH_FORAPI from "@/components/shared/BasePath"
 import LoadingComp from "@/components/shared/LoadingComp"
@@ -19,11 +19,11 @@ const builder: any = imageUrlBuilder(client);
 function urlFor(source: any) {
     return builder.image(source)
 }
-// const notificationError = (title: string) => {
-//     toast(title, {
-//         position: "top-right"
-//     })
-// };
+const notificationError = (title: string) => {
+    toast(title, {
+        position: "top-right"
+    })
+};
 
 
 
@@ -93,17 +93,17 @@ const CartComp = ({ allProductsOfStore }: { allProductsOfStore: Array<oneProduct
             }
         });
 
-        // if (stableQuantity - 1 <= 0) {
-        //     notificationError("Did not accept lower than 1")
-        // } else {
-        //     await dispatch("updateCart", {
-        //         product_id: product_id,
-        //         quantity: stableQuantity - 1,
-        //         user_id: userData.uuid,
-        //         price: price,
-        //     });
-        //     notificationError("Decremented by One")
-        // }
+        if (stableQuantity - 1 <= 0) {
+            notificationError("Did not accept lower than 1")
+        } else {
+            await dispatch("updateCart", {
+                product_id: product_id,
+                quantity: stableQuantity - 1,
+                user_id: userData.uuid,
+                price: price,
+            });
+            notificationError("Decremented by One")
+        }
     }
     async function handleIncrementByOne(product_id: string, price: any) {
         let stableQuantity: number = 0;
@@ -118,7 +118,7 @@ const CartComp = ({ allProductsOfStore }: { allProductsOfStore: Array<oneProduct
             user_id: userData.uuid,
             price: price,
         });
-        // notificationError("Incremented by One");
+        notificationError("Incremented by One");
     }
 
     async function handleProcessCheckout() {
@@ -136,7 +136,7 @@ const CartComp = ({ allProductsOfStore }: { allProductsOfStore: Array<oneProduct
 
     return (
         <div className="py-10 px-4 md:px-10">
-            {/* <Toaster /> */}
+            <Toaster />
 
             {/* first */}
             <div className="py-6">
