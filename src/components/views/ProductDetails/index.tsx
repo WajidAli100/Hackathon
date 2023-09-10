@@ -1,7 +1,6 @@
 "use client"
 import toast, { Toaster } from 'react-hot-toast'
 import Image from "next/image"
-//import { imagesType, oneProductType } from "@/components/utils/ProductsDataArrayAndType"
 import { FC, useContext, useState } from "react"
 import { client } from "../../../../sanity/lib/client";
 import imageUrlBuilder from '@sanity/image-url'

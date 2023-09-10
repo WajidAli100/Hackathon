@@ -2,7 +2,7 @@
 import { cartContext } from '@/global/context';
 import { useContext, useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { ImGoogle } from 'react-icons/im';
+//import { ImGoogle } from 'react-icons/im';
 
 const notificationError = (title: string) => {
     toast(title, {

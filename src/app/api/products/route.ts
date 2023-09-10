@@ -1,6 +1,5 @@
 import { oneProductType } from "@/components/utils/ProductsDataArraysAndTypes";
 import { NextRequest, NextResponse } from "next/server";
-//import { oneProductType } from "@/components/utils/ProductsDataArrayAndType";
 
 export async function GET(request: NextRequest) {
     const orignalData: Array<oneProductType> = [];
